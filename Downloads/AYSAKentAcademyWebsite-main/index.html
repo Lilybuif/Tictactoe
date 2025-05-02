@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYSA Kent - African Youth Sports Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --cream: #F5F5DC;
+      --white: #FFFFFF;
+      --black: #1A1A1A;
+      --gold: #D4AF37;
+      --dark-cream: #E8E4C9;
+      --light-gray: #F8F8F8;
+      --accent-blue: #2C3E50;
+      --accent-gold: #FDB813;
+      --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #FDB813 100%);
+      --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #2C3E50 100%);
+      --text-primary: #2C3E50;
+      --text-secondary: #34495E;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+      --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    /* Header Styles */
+    .navbar {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .navbar-brand:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gradient-gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover:after {
+      transform: scaleX(1);
+    }
+
+    .navbar-brand img {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .navbar-brand:hover img {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.05);
+      transform: scale(1.05);
+    }
+
+    .nav-link {
+      color: var(--text-primary);
+      font-weight: 500;
+      margin: 0 10px;
+      padding: 8px 15px;
+      transition: all 0.3s;
+      position: relative;
+      border-radius: 8px;
+    }
+
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-gold);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover:after,
+    .nav-link.active:after {
+      width: 60%;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .btn-register {
+      background: var(--gradient-dark);
+      color: var(--white);
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-register:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.5s ease;
+    }
+
+    .btn-register:hover:before {
+      left: 100%;
+    }
+
+    .btn-register:hover {
+      background: var(--gradient-gold);
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding-top: 100px;
+      padding-bottom: 50px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/slider-image.jpg') no-repeat center center;
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      filter: brightness(1.1);
+    }
+
+    .hero-section:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--gradient-dark);
+      opacity: 0.5;
+      z-index: 1;
+      mix-blend-mode: multiply;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease;
+      text-shadow: none;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .btn-hero {
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 30px;
+      margin-right: 15px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-hero:hover:before {
+      left: 0;
+    }
+
+    .btn-dark {
+      background: var(--gradient-dark);
+      border: none;
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: var(--gradient-gold);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn-outline-light:hover {
+      background: var(--white);
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      padding: 100px 0;
+    }
+
+    .welcome-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .welcome-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .welcome-card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+    }
+
+    .highlight-card {
+      background: var(--gradient-dark);
+      color: var(--white);
+      border-radius: 15px;
+      padding: 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .highlight-card h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    /* Programs Section */
+    .programs-section {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: var(--gold);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .program-card {
+      border-radius: 15px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .program-card .card-body {
+      padding: 25px;
+    }
+
+    .card-icon {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .card-age {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--black);
+      opacity: 0.7;
+    }
+
+    .program-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .btn-enroll {
+      background-color: var(--black);
+      color: var(--white);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+    }
+
+    .btn-enroll:hover {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 100px 0;
+      background-color: var(--cream);
+    }
+
+    .about-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .about-grid {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+
+    .about-grid:hover {
+      transform: translateY(-10px);
+    }
+
+    .about-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* Values Section */
+    .values-section {
+      padding: 100px 0;
+      background-color: var(--white);
+    }
+
+    .value-card {
+      margin-bottom: 60px;
+    }
+
+    .value-card h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .value-card h1:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: var(--gold);
+      bottom: -15px;
+      left: 0;
+    }
+
+    .value-card img {
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 80px 0;
+      background-color: var(--cream);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .sports-icons {
+      margin-top: 50px;
+    }
+
+    .sports-icons i {
+      font-size: 2.5rem;
+      margin: 0 20px;
+      color: var(--black);
+      transition: all 0.3s;
+    }
+
+    .sports-icons i:hover {
+      color: var(--gold);
+      transform: scale(1.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 80px 0 30px;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin: 0 10px;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      .value-card {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .value-card h1:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Add this to the CSS section */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-gold);
+        color: var(--black);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-5px) rotate(360deg);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background: var(--gradient-dark);
+        color: var(--white);
+    }
+
+    .back-to-top i {
+        transition: transform 0.3s ease;
+    }
+
+    .back-to-top:hover i {
+        transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg py-1 sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/index.html">
+      <img src="images/logo-circle.jpeg" alt="AYSA Kent Logo" class="img-fluid" style="width: 100px; height: 100px; border-radius: 50%;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="aboutus.html">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Programs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="donation.html">Donate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="events.html">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contactus.html">Contact Us</a>
+        </li>
+      </ul>
+      <a href="registration.html" class="btn btn-register ms-lg-3 mt-3 mt-lg-0">Registration</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="hero-content">
+          <h1 class="hero-title">Empowering youth through sports leadership and community</h1>
+          <p class="hero-subtitle">Youth Sports academy enrolling all year-round in the Kent.</p>
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-dark btn-hero">Learn More</a>
+            <a href="#" class="btn btn-outline-light btn-hero">Our Programs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Welcome Section -->
+<section class="welcome-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="welcome-card">
+          <h1>Welcome to the African Youth Sports Academy (AYSA Kent)!</h1>
+          <p>Welcome to the African Youth Sports Academy (AYSA Kent), where dreams take flight and futures are forged through the transformative power of sports. As a proud branch of African Youth Sports, we are more than just a sports academy - we are a movement, a family, and a beacon of hope for youth across our community. Our mission transcends the boundaries of traditional athletics; we are committed to nurturing champions both on and off the field through professional training in soccer, basketball, volleyball, swimming, and track and field.</p>
+          <p>At AYSA Kent, we believe that sports have the unique power to shape character, instill discipline, and foster a sense of belonging. In a world where young people face countless challenges from negative influences and limited opportunities, we provide a sanctuary where they can grow, thrive, and discover their full potential. Our programs are designed not only to develop elite athletes but to cultivate resilient, confident, and compassionate leaders who will make a lasting impact in their communities.</p>
+          <a href="#" class="btn btn-outline-dark mt-3">About Us</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="highlight-card">
+          <h1>Fall Youth Sports Classes Start in September!</h1>
+          <p>Professional training programs for all skill levels</p>
+          <ul class="list-unstyled my-4">
+            <li><i class="fas fa-check me-2"></i> 12 Week Program</li>
+            <li><i class="fas fa-check me-2"></i> 4 Months Duration</li>
+            <li><i class="fas fa-check me-2"></i> Starts 01/09/2024</li>
+          </ul>
+          <a href="#" class="btn btn-dark">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Programs Section -->
+<section class="programs-section" id="programs">
+  <div class="container">
+    <div class="section-title">
+      <h2>Programs Offered</h2>
+      <p class="mt-3">Professional coaching for youth of all skill levels</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="program-card card">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img src="images/soccer.jpeg" class="img-fluid w-100 h-100" alt="Soccer Program">
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <div class="card-icon">
+                  <i class="fa-regular fa-futbol"></i>
+                </div>
+                <span class="card-age">Kids & Teens</span>
+                <h3>Soccer Program</h3>
+                <p>Young athletes master precise passing, and powerful shooting techniques while learning game strategies, positional play, and teamwork fundamentals. Our coaches emphasize sportsmanship, field awareness, and physical conditioning to develop well-rounded players.</p>
+                <a href="#" class="btn btn-enroll"><i class="fas fa-plus me-2"></i>Enroll Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="program-card card">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img src="images/swimming.jpeg" class="img-fluid w-100 h-100" alt="Swimming Program">
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <div class="card-icon">
+                  <i class="fas fa-person-swimming"></i>
+                </div>
+                <span class="card-age">Kids & Teens</span>
+                <h3>Swimming Program</h3>
+                <p>Students progress from water safety basics to mastering all competitive strokes. Our curriculum includes endurance training, speed techniques, diving fundamentals, and lifesaving skills, building both confidence and competence in the water.</p>
+                <a href="#" class="btn btn-enroll"><i class="fas fa-plus me-2"></i>Enroll Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card">
+          <img src="images/track.jpeg" class="card-img-top" alt="Track & Field">
+          <div class="card-body">
+            <div class="card-icon">
+              <i class="fas fa-running"></i>
+            </div>
+            <span class="card-age">Kids & Teens</span>
+            <h3>Track & Field Program</h3>
+            <p>Runners develop proper sprinting mechanics, distance running strategies, and race pacing. Field athletes learn jumping approaches, throwing techniques, and explosive power development, all while building mental toughness and discipline.</p>
+            <a href="#" class="btn btn-enroll"><i class="fas fa-plus me-2"></i>Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card">
+          <img src="images/basketball.jpeg" class="card-img-top" alt="Basketball Program">
+          <div class="card-body">
+            <div class="card-icon">
+              <i class="fas fa-basketball-ball"></i>
+            </div>
+            <span class="card-age">Kids & Teens</span>
+            <h3>Basketball Program</h3>
+            <p>Players develop essential ball-handling skills, shooting form, defensive techniques, and court vision through progressive drills. We teach game strategy, conditioning exercises, and leadership qualities that translate both on and off the court.</p>
+            <a href="#" class="btn btn-enroll"><i class="fas fa-plus me-2"></i>Enroll Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="program-card card">
+          <img src="images/vollyball.png" class="card-img-top" alt="Volleyball Program">
+          <div class="card-body">
+            <div class="card-icon">
+              <i class="fas fa-volleyball-ball"></i>
+            </div>
+            <span class="card-age">Kids & Teens</span>
+            <h3>Volleyball Program</h3>
+            <p>Athletes learn proper serving form, spiking techniques, blocking fundamentals, and court positioning. Our training focuses on team communication, competitive gameplay strategies, and developing quick reflexes for dynamic court coverage.</p>
+            <a href="#" class="btn btn-enroll"><i class="fas fa-plus me-2"></i>Enroll Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-12">
+        <div class="about-content">
+          <h2>A Vision Rooted in Community and Legacy</h2>
+          <p>AYSA Kent was born from the vision of Executive Director Ali, whose own life was transformed through the power of community support and athletic mentorship. With over a decade of grassroots experience, Ali understands firsthand the challenges facing today's youth - and the profound difference that a caring, structured environment can make. His leadership is driven by a deep commitment to paying forward the opportunities he once received, ensuring that AYSA Kent serves as a lifeline for the next generation.</p>
+          <p>Under Ali's guidance, AYSA Kent has become more than just a sports program; it is a testament to the transformative power of the community. Our core values opportunity, accountability, and hope are woven into every practice, every game, and every interaction. We are not just building athletes; we are shaping future leaders who will carry these lessons forward, creating a ripple effect of positive change throughout our neighborhoods.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12 mb-5">
+        <h3>How We Change the Game</h3>
+        <p>What sets AYSA Kent apart is our holistic approach to youth development. We go beyond the basics of athletic training to address the whole child - mind, body, and spirit.</p>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="about-grid">
+          <div class="about-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h4>Creating a Second Home</h4>
+          <p>For many of our participants, AYSA Kent is more than a program - it's a haven. We provide a welcoming, inclusive space where youth can escape negative influences and build meaningful relationships with peers and mentors. Through teamwork and camaraderie, they learn the value of trust, respect, and mutual support.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="about-grid">
+          <div class="about-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4>Mentoring Future Leaders</h4>
+          <p>Our coaches and volunteers are more than instructors; they are role models who embody integrity, perseverance, and compassion. They teach life skills alongside sports techniques, helping youth navigate challenges both on and off the field. Whether it's setting goals, managing stress, or resolving conflicts, our mentors equip athletes with the tools they need to succeed in all areas of life.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-4">
+        <div class="about-grid">
+          <div class="about-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4>Prioritizing Holistic Growth</h4>
+          <p>While athletic excellence is a key focus, we place equal emphasis on mental toughness, emotional resilience, and academic achievement. Our programs incorporate workshops on leadership, college readiness, and career planning, ensuring that our athletes are prepared for success long after their playing days are over.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="value-card">
+          <h1>Community</h1>
+          <p>At AYSA, community is everything.</p>
+          <p>We create spaces where young athletes feel seen, supported, and connected. From the field to the classroom, we build a brotherhood and sisterhood rooted in respect, unity, and shared purpose. This is more than just sports this is family.</p>
+          <a href="#" class="btn btn-outline-dark"><i class="fas fa-plus me-2"></i>Get Started</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <img src="images/community.jpeg" class="img-fluid" alt="Community">
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-5">
+      <div class="col-lg-5 order-lg-1 order-2">
+        <img src="images/fun.jpeg" class="img-fluid" alt="Fun">
+      </div>
+      <div class="col-lg-7 order-lg-2 order-1">
+        <div class="value-card">
+          <h1>Fun</h1>
+          <p>Sports should be joyful.</p>
+          <p>Every practice, every game, every splash in the pool is a moment to smile, grow, and discover the fun in learning. AYSA brings out the best in our youth through safe, uplifting environments where fun is just as important as fundamentals.</p>
+          <a href="#" class="btn btn-outline-dark"><i class="fas fa-plus me-2"></i>Explore</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center mt-5">
+      <div class="col-lg-7">
+        <div class="value-card">
+          <h1>Teamwork.</h1>
+          <p>Together, we go further.</p>
+          <p>AYSA programs teach kids the value of communication, trust, and supporting one another. With the guidance of dedicated coaches, our athletes learn that true success comes from working as one one and off the field.</p>
+          <a href="#" class="btn btn-outline-dark"><i class="fas fa-plus me-2"></i>Get Started</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <img src="images/teamwork.jpeg" class="img-fluid" alt="Teamwork">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-5">
+        <h2 class="text-center">Explore Our Sports</h2>
+        <p class="text-center">Professional facilities for all our youth sports programs</p>
+      </div>
+
+      <div class="col-lg-10 mx-auto mb-5">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="stat-item">
+              <h3 class="stat-number">1503</h3>
+              <p>Square foot indoor sports</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="stat-item">
+              <h3 class="stat-number">2503</h3>
+              <p>Square foot outdoor fields</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="stat-item">
+              <h3 class="stat-number">24/7</h3>
+              <p>Available Sports at night</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-12 text-center">
+        <div class="sports-icons">
+          <i class="fas fa-volleyball-ball"></i>
+          <i class="fas fa-basketball-ball"></i>
+          <i class="fas fa-swimmer"></i>
+          <i class="fas fa-futbol"></i>
+          <i class="fas fa-running"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-6">
+        <div class="footer-logo">AYSA Kent</div>
+        <p>Contact: ali.Abdulla@africanysa.org | 206-355-9280</p>
+        <div class="social-icons mb-4">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p><small>© 2024 African Youth Sports Academy - AYSA Kent</small></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Smooth scrolling for all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Parallax effect for hero section
+    const heroSection = document.querySelector('.hero-section');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        heroSection.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+    });
+
+    // Reveal animations on scroll
+    const revealElements = document.querySelectorAll('.program-card, .value-card, .stat-item, .welcome-card, .highlight-card');
+    
+    const revealOnScroll = () => {
+        revealElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('revealed');
+            }
+        });
+    };
+
+    // Add CSS for reveal animation
+    const style = document.createElement('style');
+    style.textContent = `
+        .program-card, .value-card, .stat-item, .welcome-card, .highlight-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .program-card.revealed {
+            transition-delay: 0.1s;
+        }
+        
+        .value-card.revealed {
+            transition-delay: 0.2s;
+        }
+        
+        .stat-item.revealed {
+            transition-delay: 0.3s;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize reveal on load and scroll
+    window.addEventListener('load', revealOnScroll);
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Smooth scroll to top button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Add hover effect to cards
+    const cards = document.querySelectorAll('.program-card, .value-card, .stat-item');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Add typing effect to hero title
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        let i = 0;
+        
+        const typeWriter = () => {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        };
+        
+        typeWriter();
+    }
+
+    // Add typing effect to hero subtitle
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    if (heroSubtitle) {
+        const text = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        let i = 0;
+        
+        const typeWriter = () => {
+            if (i < text.length) {
+                heroSubtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 30);
+            }
+        };
+        
+        // Start subtitle typing after a short delay
+        setTimeout(typeWriter, 500);
+    }
+
+    // Add fade-in effect to hero buttons
+    const heroButtons = document.querySelector('.hero-buttons');
+    if (heroButtons) {
+        heroButtons.style.opacity = '0';
+        heroButtons.style.transform = 'translateY(20px)';
+        heroButtons.style.transition = 'all 0.5s ease';
+        
+        // Show buttons after typing is complete
+        setTimeout(() => {
+            heroButtons.style.opacity = '1';
+            heroButtons.style.transform = 'translateY(0)';
+        }, 1500); // Adjust timing based on text length
+    }
+
+    // Add scroll progress indicator
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gradient-gold);
+        z-index: 9999;
+        transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+    });
+</script>
+</body>
+</html>
